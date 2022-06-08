@@ -129,6 +129,11 @@ app.get("/:listName", function (req, res) {
 
 })
 
-app.listen(4000, function() {
-  console.log("Server started on port 4000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+
+app.listen(port, function() {
+  console.log("Server has started successfully");
 });
