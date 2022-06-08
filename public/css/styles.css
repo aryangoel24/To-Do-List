@@ -1,12 +1,13 @@
 html {
   background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #DAE2F8 50%, #D6A4A4 50%);
+  /* background-image: -webkit-linear-gradient(65deg, #DAE2F8 50%, #D6A4A4 50%); */
+  background-image: linear-gradient(to bottom right, #EC6F66, #F3A183);
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
 
 h1 {
-  color: #fff;
+  color: black;
   padding: 10px;
 }
 
@@ -19,7 +20,7 @@ h1 {
 }
 
 #heading {
-  background-color: #DAE2F8;
+  background-color: white;
   text-align: center;
 }
 
