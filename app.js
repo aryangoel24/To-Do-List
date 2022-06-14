@@ -52,7 +52,9 @@ app.get("/", function(req, res) {
       res.redirect("/")
     }
     else{
-      res.render("list", {listTitle: "Today", newListItems: results});
+      List.find({name: {$ne: "Favicon.ico"}}, function (err, foundList) {
+        res.render("list", {listTitle: "Today", newListItems: results, foundList: foundList});
+      })
     }
   })
 });
@@ -107,12 +109,19 @@ app.post("/delete", function (req, res) {
 
 })
 
+app.post("/redirect", function (req, res) {
+  const listName = req.body.dropDown;
+  res.redirect(listName)
+})
+
 app.get("/:listName", function (req, res) {
   const listName = _.capitalize(req.params.listName)
 
-  List.findOne({name: listName}, function (err, foundList) {
-    if (!err && foundList) {
-      res.render("list", {listTitle: foundList.name, newListItems: foundList.items})
+  List.findOne({name: listName}, function (err, desiredList) {
+    if (!err && desiredList) {
+      List.find({name: {$nin: ["Favicon.ico", desiredList.name]}}, function (err, foundList) {
+        res.render("list", {listTitle: desiredList.name, newListItems: desiredList.items, foundList: foundList});
+      })
     }
     else {
       const list = new List({
