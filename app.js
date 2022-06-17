@@ -11,8 +11,10 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+require("dotenv").config()
+console.log(process.env.CONNECTION_URL);
 
-mongoose.connect("mongodb+srv://aryangoel24:G0eL_duBai25@cluster0.gsp5pin.mongodb.net/todolistDB")
+mongoose.connect(process.env.CONNECTION_URL)
 
 const itemsSchema = {
   name: String
