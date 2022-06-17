@@ -12,7 +12,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 require("dotenv").config()
-console.log(process.env.CONNECTION_URL);
 
 mongoose.connect(process.env.CONNECTION_URL)
 
