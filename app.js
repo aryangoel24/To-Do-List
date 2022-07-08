@@ -115,6 +115,12 @@ app.post("/redirect", function (req, res) {
   res.redirect(listName)
 })
 
+app.post("/create", function (req, res) {
+  const newListName = req.body.newListName
+
+  res.redirect("/" + newListName)
+})
+
 app.get("/:listName", function (req, res) {
   const listName = _.capitalize(req.params.listName)
 
